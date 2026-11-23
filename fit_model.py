@@ -2,6 +2,7 @@
 
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 import statsmodels.formula.api as smf
 
@@ -27,6 +28,8 @@ for term, pvalue in full_model.pvalues.items():
     print(f"p-value {term}: {pvalue:.4f}")
 print(f"R-squared: {full_model.rsquared:.4f}")
 print(f"adjusted R-squared: {full_model.rsquared_adj:.4f}")
+print(f"training residual standard error: ${np.sqrt(full_model.mse_resid):,.2f}")
+print(f"training RMSE: ${np.sqrt(np.mean(full_model.resid ** 2)):,.2f}")
 print()
 
 
